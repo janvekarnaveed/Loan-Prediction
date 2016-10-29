@@ -9,7 +9,7 @@ train$Self_Employed<-as.numeric(train$Self_Employed)-1
 train$Property_Area<-as.numeric(train$Property_Area)-1
 train$Loan_Status<-as.numeric(train$Loan_Status) -1
 
-#Impute
+#Imputation
 library(mice)
 trainTemp <- mice(train,m=1,maxit=10,meth='rf',seed=50)
 summary(trainTemp)
@@ -17,9 +17,7 @@ summary(trainTemp)
 completedTrain <- complete(trainTemp,1)
 missingpercompletedTrain<-as.data.frame(apply(completedTrain,2,permiss))
 
-
-
-#For regression modeling date variable is excluded
+#For regression modeling, excluding the date variable
 imp_model1 <- completedTrain[,-1]
 
 #Data partition
