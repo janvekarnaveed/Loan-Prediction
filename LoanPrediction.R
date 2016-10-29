@@ -1,7 +1,7 @@
-#Reading the given CSV file in RStudio
+#Reading the given CSV file in RStudio 
 train <- read.csv("/DataHackathon/train.csv", header=T, na.strings=c("","NA",".","Not Available","n/a","N/A")) ##Changed blank cells to NA
 
-#One-hot encoding
+#One-hot encoding for Categorical Variable
 train$Gender<-as.numeric(train$Gender)-1
 train$Married<-as.numeric(train$Married)-1
 train$Education<-as.numeric(train$Education)-1
